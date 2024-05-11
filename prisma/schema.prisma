@@ -1,0 +1,102 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Alumnos {
+  numero_control       String            @id
+  nombre               String
+  apellido_paterno     String
+  apellido_materno     String
+  domicilio            String?
+  telefono_personal    String?
+  telefono_padre_tutor String?
+  curp                 String
+  correo_electronico   String
+  fotografia           String?
+  clave_grupo          Int
+  materias             Materias[]
+  asistencias          Asistencia[]
+  prestamos            PrestamoLibro[]
+  devoluciones         DevolucionLibro[]
+  Grupo                Grupo             @relation(fields: [clave_grupo], references: [clave_grupo])
+}
+
+model RecursosHumanos {
+  numero_identificacion String  @id
+  nombre                String
+  apellido_paterno      String
+  apellido_materno      String
+  domicilio             String?
+  telefono_personal     String?
+  curp                  String
+  nss                   String
+  correo_electronico    String
+  fotografia            String?
+  role                  String
+  password              String
+}
+
+model Materias {
+  clave_materia         Int      @id
+  nombre                String
+  // num_identificacion    Int ELIMINAR
+  grado                 String
+  horario               String?
+  Alumnos               Alumnos? @relation(fields: [alumnosNumero_control], references: [numero_control])
+  alumnosNumero_control String
+}
+
+model Grupo {
+  clave_grupo Int       @id
+  nombre      String
+  Alumnos     Alumnos[]
+}
+
+model Asistencia {
+  clave_asistencia Int     @id @default(autoincrement())
+  numero_control   String
+  // fecha_asistencia DateTime AGREGAR
+  alumno           Alumnos @relation(fields: [numero_control], references: [numero_control])
+}
+
+model Laboratorio {
+  clave_laboratorio      Int    @id
+  nombre                 String
+  ubicacion              String
+  disponibilidad_semanal String
+  horario                String
+  capacidad              Int
+}
+
+model PrestamoLibro {
+  numero_prestamo Int      @id @default(autoincrement())
+  numero_control  String
+  num_serie       Int
+  fecha_prestamo  DateTime
+  alumno          Alumnos  @relation(fields: [numero_control], references: [numero_control])
+  libro           Libro    @relation(fields: [num_serie], references: [num_serie])
+}
+
+model DevolucionLibro {
+  numero_devolucion Int      @id @default(autoincrement())
+  numero_control    String
+  num_serie         Int
+  fecha_devolucion  DateTime
+  alumno            Alumnos  @relation(fields: [numero_control], references: [numero_control])
+  libro             Libro    @relation(fields: [num_serie], references: [num_serie])
+}
+
+model Libro {
+  num_serie     Int               @id
+  nombre_libro  String
+  ubicacion     String
+  clasificacion String
+  cantidad      Int
+  prestamos     PrestamoLibro[]
+  devoluciones  DevolucionLibro[]
+}

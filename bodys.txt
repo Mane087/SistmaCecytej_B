@@ -1,0 +1,95 @@
+
+
+// MATERIAS
+{
+    "clave_materia": 101,
+    "nombre": "Matemáticas Avanzadas",
+    "num_identificacion": 456,
+    "grado": "12",
+    "horario": "08:00 - 09:30",
+    "alumnosNumero_control": "1234"
+}
+
+
+// GRUPO
+{
+    "clave_grupo": 3945
+    "nombre": "Grupo Matemáticas Avanzadas",
+}
+
+//ALUMNO
+{
+    "numero_control": "200110494",
+    "nombre": "Juan",
+    "apellido_paterno": "Pérez",
+    "apellido_materno": "García",
+    "domicilio": "Calle Ficticia 123, Colonia Centro",
+    "telefono_personal": "5551234567",
+    "telefono_padre_tutor": "5557654321",
+    "curp": "PEJG800825HDFRRN01",
+    "correo_electronico": "juan.perez@example.com",
+    "fotografia": "https://example.com/fotos/juan_perez.jpg",
+    "clave_grupo": 3945
+}
+
+//RH
+{
+    "numero_identificacion": "RH-2094",
+    "nombre": "Juan",
+    "apellido_paterno": "Pérez",
+    "apellido_materno": "García",
+    "domicilio": "Calle Ficticia 123, Colonia Centro",
+    "telefono_personal": "5551234567",
+    "curp": "PEJG800825HDFRRN01",
+    "nss": "12414455",
+    "correo_electronico": "juan.perez@example.com",
+    "fotografia": "https://example.com/fotos/juan_perez.jpg",
+    "role": "Director",
+    "password": "12345"
+}
+
+//LIBROS
+{
+    "num_serie": 345678,
+    "nombre_libro": "Exploraciones Científicas",
+    "ubicacion": "Estante 3, Sección B",
+    "clasificacion": "Ciencia",
+    "cantidad": 150
+}
+
+//ASISTENCIA    
+{
+    "numero_control": "200110494"
+}
+
+//LABORATORIO
+{
+    "clave_laboratorio": 202,
+    "nombre": "Laboratorio de Ciencias",
+    "ubicacion": "Edificio C, Planta Baja",
+    "disponibilidad_semanal": "Lunes a Viernes",
+    "horario": "09:00 - 17:00",
+    "capacidad": 40
+}
+
+//AUTH 
+{
+    "numero_identificacion": "RH-2094",
+    "password": "12345"
+}
+
+//PRESTAMOS
+{
+    "numero_prestamo": 7890,
+    "numero_control": "200110494",
+    "num_serie": 345678,
+    "fecha_prestamo": "2024-12-15T00:00:00Z"
+}
+
+//DEVOLUCIONES
+{
+    "numero_devolucion": 7890,
+    "numero_control": "200110494",
+    "num_serie": 345678,
+    "fecha_devolucion": "2024-12-15T00:00:00Z"
+}
