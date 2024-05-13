@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Post, HttpCode, HttpStatus, HttpException } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { RecursosHumanosDto } from './dto/RecursosHumanos.dto';
 import { ApiTags } from '@nestjs/swagger';
@@ -9,8 +9,21 @@ export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @Post()
+  @HttpCode(HttpStatus.OK)
   async login(@Body() recursosHumanos: RecursosHumanosDto) {
-    return this.authService.login(recursosHumanos);
+    try {
+      const user = await this.authService.login(recursosHumanos);
+      return {
+        status: HttpStatus.OK,
+        message: 'Login exitoso',
+        user,
+      };
+    } catch (error) {
+      throw new HttpException({
+        status: HttpStatus.UNAUTHORIZED,
+        error: 'Credenciales inválidas',
+      }, HttpStatus.UNAUTHORIZED);
+    }
   }
 
 }

@@ -48,6 +48,7 @@ export class RecursosHumanosDto {
   @IsString()
   fotografia: string;
 
+  @IsOptional()
   @IsString()
   role: string;
 

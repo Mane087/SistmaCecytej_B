@@ -3,10 +3,6 @@ import { IsNotEmpty, IsString, IsNumber, IsDate } from 'class-validator';
 
 export class PrestamosDto {
   @IsNotEmpty()
-  @IsNumber()
-  numero_prestamo: number;
-
-  @IsNotEmpty()
   @IsString()
   numero_control: string;
 

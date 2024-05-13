@@ -3,10 +3,6 @@ import { IsNotEmpty, IsString, IsNumber, IsDate } from 'class-validator';
 
 export class DevolucionesDto {
   @IsNotEmpty()
-  @IsNumber()
-  numero_devolucion: number;
-
-  @IsNotEmpty()
   @IsString()
   numero_control: string;
 

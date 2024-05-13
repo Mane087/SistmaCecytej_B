@@ -11,10 +11,6 @@ export class MateriasDto {
     nombre: string;
 
     @IsNotEmpty()
-    @IsNumber()
-    num_identificacion: number;
-
-    @IsNotEmpty()
     @IsString()
     grado: string;
 
